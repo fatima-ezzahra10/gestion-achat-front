@@ -1,0 +1,133 @@
+<div class="modal-header">
+  <h5 class="modal-title">
+    <i class="fas" [class.fa-plus-circle]="!isEdit" [class.fa-edit]="isEdit"></i>
+    {{ isEdit ? 'Modifier' : 'Ajouter' }} une transaction
+  </h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+  <div *ngIf="error" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="fas fa-exclamation-triangle"></i> {{ error }}
+    <button type="button" class="btn-close" (click)="error = null" aria-label="Close"></button>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Client <span class="text-danger">*</span></label>
+        <select
+          formControlName="clientId"
+          class="form-select"
+          [class.is-invalid]="form.get('clientId')?.invalid && form.get('clientId')?.touched"
+        >
+          <option value="">Sélectionner un client</option>
+          <option *ngFor="let client of clients" [value]="client.id">
+            {{ client.nom }}
+          </option>
+        </select>
+        <div *ngIf="form.get('clientId')?.invalid && form.get('clientId')?.touched" class="invalid-feedback">
+          Client requis
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Titre <span class="text-danger">*</span></label>
+        <select
+          formControlName="titreId"
+          class="form-select"
+          [class.is-invalid]="form.get('titreId')?.invalid && form.get('titreId')?.touched"
+        >
+          <option value="">Sélectionner un titre</option>
+          <option *ngFor="let titre of titres" [value]="titre.id">
+            {{ titre.nom }}
+          </option>
+        </select>
+        <div *ngIf="form.get('titreId')?.invalid && form.get('titreId')?.touched" class="invalid-feedback">
+          Titre requis
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Date de transaction <span class="text-danger">*</span></label>
+        <input
+          type="date"
+          formControlName="dateTransaction"
+          class="form-control"
+          [class.is-invalid]="form.get('dateTransaction')?.invalid && form.get('dateTransaction')?.touched"
+        />
+        <div *ngIf="form.get('dateTransaction')?.invalid && form.get('dateTransaction')?.touched" class="invalid-feedback">
+          Date requise
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Quantité <span class="text-danger">*</span></label>
+        <input
+          type="number"
+          formControlName="quantite"
+          class="form-control"
+          min="1"
+          [class.is-invalid]="form.get('quantite')?.invalid && form.get('quantite')?.touched"
+          placeholder="Entrez la quantité"
+        />
+        <div *ngIf="form.get('quantite')?.invalid && form.get('quantite')?.touched" class="invalid-feedback">
+          Quantité requise (minimum 1)
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Prix unitaire <span class="text-danger">*</span></label>
+        <input
+          type="number"
+          formControlName="prixUnitaire"
+          class="form-control"
+          step="0.01"
+          min="0.01"
+          [class.is-invalid]="form.get('prixUnitaire')?.invalid && form.get('prixUnitaire')?.touched"
+          placeholder="Entrez le prix unitaire"
+        />
+        <div *ngIf="form.get('prixUnitaire')?.invalid && form.get('prixUnitaire')?.touched" class="invalid-feedback">
+          Prix unitaire requis (minimum 0.01)
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Type de transaction <span class="text-danger">*</span></label>
+        <select
+          formControlName="typeTransaction"
+          class="form-select"
+          [class.is-invalid]="form.get('typeTransaction')?.invalid && form.get('typeTransaction')?.touched"
+        >
+          <option value="">Sélectionner un type</option>
+          <option *ngFor="let type of typesTransaction" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+        <div *ngIf="form.get('typeTransaction')?.invalid && form.get('typeTransaction')?.touched" class="invalid-feedback">
+          Type de transaction requis
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex gap-2 justify-content-end">
+      <button
+        class="btn btn-secondary"
+        type="button"
+        (click)="activeModal.dismiss()"
+        [disabled]="loading"
+      >
+        <i class="fas fa-times"></i> Annuler
+      </button>
+      <button
+        class="btn btn-success"
+        type="submit"
+        [disabled]="form.invalid || loading"
+      >
+        <i class="fas" [class.fa-save]="!isEdit" [class.fa-edit]="isEdit"></i>
+        <span *ngIf="loading">En cours...</span>
+        <span *ngIf="!loading">{{ isEdit ? 'Modifier' : 'Enregistrer' }}</span>
+      </button>
+    </div>
+  </form>
+</div>

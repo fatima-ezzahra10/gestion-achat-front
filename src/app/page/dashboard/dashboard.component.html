@@ -1,0 +1,124 @@
+<div class="page-wrapper">
+  <main class="content-wrapper">
+    <!-- Statistiques -->
+    <div class="mdc-layout-grid stats-grid">
+      <div class="mdc-layout-grid__inner">
+        <!-- Clients -->
+        <div class="mdc-layout-grid__cell">
+          <div class="mdc-card stat-card bg-primary">
+            <div class="stat-icon">
+              <i class="material-icons">people</i>
+            </div>
+            <div class="stat-info">
+              <h3>{{ stats.clients }}</h3>
+              <p>Clients</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Titres -->
+        <div class="mdc-layout-grid__cell">
+          <div class="mdc-card stat-card bg-secondary">
+            <div class="stat-icon">
+              <i class="material-icons">trending_up</i>
+            </div>
+            <div class="stat-info">
+              <h3>{{ stats.titres }}</h3>
+              <p>Titres</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Transactions -->
+        <div class="mdc-layout-grid__cell">
+          <div class="mdc-card stat-card bg-info">
+            <div class="stat-icon">
+              <i class="material-icons">swap_horiz</i>
+            </div>
+            <div class="stat-info">
+              <h3>{{ stats.transactions }}</h3>
+              <p>Transactions</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Prix -->
+        <div class="mdc-layout-grid__cell">
+          <div class="mdc-card stat-card bg-warning">
+            <div class="stat-icon">
+              <i class="material-icons">euro_symbol</i>
+            </div>
+            <div class="stat-info">
+              <h3>{{ stats.prix }}</h3>
+              <p>Prix enregistrés</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Graphiques -->
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <canvas id="clientsChart"></canvas>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <canvas id="titresChart"></canvas>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <canvas id="transactionsChart"></canvas>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <canvas id="prixChart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Listes récentes -->
+    <div class="mdc-layout-grid">
+      <div class="mdc-layout-grid__inner">
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">Clients récents</h6>
+            <div class="recent-list">
+              <div *ngFor="let client of recentClients" class="recent-item">
+                <div class="item-icon">
+                  <i class="material-icons">person</i>
+                </div>
+                <div class="item-info">
+                  <h4>{{ client.prenom }} {{ client.nom }}</h4>
+                  <p>{{ client.email }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop">
+          <div class="mdc-card">
+            <h6 class="card-title">Titres récents</h6>
+            <div class="recent-list">
+              <div *ngFor="let titre of recentTitres" class="recent-item">
+                <div class="item-icon">
+                  <i class="material-icons">show_chart</i>
+                </div>
+                <div class="item-info">
+                  <h4>{{ titre.code }}</h4>
+                  <p>{{ titre.nom }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

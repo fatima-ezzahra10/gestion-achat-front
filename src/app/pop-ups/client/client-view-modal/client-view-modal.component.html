@@ -1,0 +1,40 @@
+<div class="modal-header">
+  <h4 class="modal-title">Détails du client</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body" *ngIf="client">
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>Nom:</strong> {{ client.nom }}</p>
+      <p><strong>Prénom:</strong> {{ client.prenom }}</p>
+      <p><strong>Email:</strong> {{ client.email }}</p>
+      <p><strong>Téléphone:</strong> {{ client.telephone || 'Non renseigné' }}</p>
+    </div>
+    <div class="col-md-6">
+      <p><strong>Adresse:</strong> {{ client.adresse || 'Non renseignée' }}</p>
+      <p><strong>Ville:</strong> {{ client.ville || 'Non renseignée' }}</p>
+      <p><strong>Code Postal:</strong> {{ client.codePostal || 'Non renseigné' }}</p>
+      <p><strong>Pays:</strong> {{ client.pays || 'Non renseigné' }}</p>
+    </div>
+  </div>
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <p><strong>Date de création:</strong> {{ client.dateCreation | date:'dd/MM/yyyy' }}</p>
+    </div>
+    <div class="col-md-6">
+      <p><strong>Statut:</strong>
+        <span class="badge" [ngClass]="{
+          'bg-success': client.statut === 'ACTIF',
+          'bg-danger': client.statut === 'INACTIF'
+        }">
+          {{ client.statut }}
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="activeModal.close()">Fermer</button>
+</div>

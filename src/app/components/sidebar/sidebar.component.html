@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Material Design Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css">
+</head>
+<body>
+
+<aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
+  <div class="mdc-drawer__header">
+    <a href="#" class="brand-logo">
+      <img src="assets/images/sypex-logo.png" alt="Logo" width="150"/>
+    </a>
+  </div>
+  <div class="mdc-drawer__content">
+    <div class="mdc-list-group">
+      <nav class="mdc-list mdc-drawer-menu">
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link active" routerLink="/dashboard" routerLinkActive="active" >
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">dashboard</i>
+            Dashboard
+          </a>
+        </div>
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" routerLink="/client" routerLinkActive="active" >
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">people</i>
+            Clients
+          </a>
+        </div>
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" routerLink="/titre" routerLinkActive="active" >
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">title</i>
+            Titre
+          </a>
+        </div>
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" routerLink="/transaction" routerLinkActive="active" >
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">swap_horiz</i>
+            Transactions
+          </a>
+        </div>
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" routerLink="/prix" routerLinkActive="active" >
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">attach_money</i>
+            Prix
+          </a>
+        </div>
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-expansion-panel-link" href="#" data-toggle="expansionPanel" data-target="reports-submenu" routerLinkActive="active" >
+            <div style="display: flex; align-items: center;">
+              <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">assessment</i>
+              Rapports
+            </div>
+            <i class="mdc-drawer-arrow material-icons">chevron_right</i>
+          </a>
+          <div class="mdc-expansion-panel" id="reports-submenu">
+            <nav class="mdc-list mdc-drawer-submenu">
+              <div class="mdc-list-item mdc-drawer-item">
+                <a class="mdc-drawer-link" href="#monthly-report" routerLinkActive="active" >
+                  Rapport Mensuel
+                </a>
+              </div>
+              <div class="mdc-list-item mdc-drawer-item">
+                <a class="mdc-drawer-link" href="#annual-report" routerLinkActive="active" >
+                  Rapport Annuel
+                </a>
+              </div>
+            </nav>
+          </div>
+        </div>
+        <div class="mdc-list-item mdc-drawer-item">
+          <a class="mdc-drawer-link" href="#settings">
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">settings</i>
+            Paramètres
+          </a>
+        </div>
+      </nav>
+    </div>
+    <div class="profile-actions">
+      <a href="#settings">Paramètres</a>
+      <span class="divider"></span>
+      <a href="#logout">Déconnexion</a>
+    </div>
+
+  </div>
+</aside>
+
+</body>
+</html>

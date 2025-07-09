@@ -1,0 +1,53 @@
+<div class="modal-header">
+  <h5 class="modal-title">{{ mode === 'add' ? 'Ajouter un prix' : 'Modifier le prix' }}</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+  <div *ngIf="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <i class="fas fa-exclamation-triangle"></i> {{ errorMessage }}
+    <button type="button" class="btn-close" (click)="errorMessage = ''" aria-label="Close"></button>
+  </div>
+
+  <form [formGroup]="prixForm">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Titre <span class="text-danger">*</span></label>
+        <select formControlName="titreId" class="form-select">
+          <option [ngValue]="null">-- Sélectionnez un titre --</option>
+          <option *ngFor="let titre of titres" [value]="titre.id">
+            {{ titre.code }} - {{ titre.nom }}
+          </option>
+        </select>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Date <span class="text-danger">*</span></label>
+        <input formControlName="datePrix" type="date" class="form-control" />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Valeur <span class="text-danger">*</span></label>
+        <input formControlName="valeur" type="number" class="form-control" step="0.01" min="0" />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Devise</label>
+        <select formControlName="devise" class="form-select">
+          <option value="MAD">MAD - Dirham Marocain</option>
+          <option value="EUR">EUR - Euro</option>
+          <option value="USD">USD - Dollar Américain</option>
+          <option value="GBP">GBP - Livre Sterling</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Annuler</button>
+  <button type="button" class="btn btn-primary" (click)="save()" [disabled]="prixForm.invalid || isLoading">
+    <span *ngIf="isLoading" class="spinner-border spinner-border-sm"></span>
+    {{ mode === 'add' ? 'Enregistrer' : 'Modifier' }}
+  </button>
+</div>

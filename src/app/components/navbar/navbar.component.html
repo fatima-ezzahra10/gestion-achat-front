@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Material Design</title>
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Material Design Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css">
+
+</head>
+<body>
+    <header class="mdc-top-app-bar">
+        <div class="mdc-top-app-bar__row">
+            <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+                <button class="sidebar-toggler">
+                    <i class="material-icons">menu</i>
+                </button>
+                <div class="search-container">
+                    <i class="material-icons search-icon">search</i>
+                    <input type="text" class="search-field" placeholder="Rechercher..." id="search-input">
+                </div>
+            </div>
+
+            <div class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+                <!-- Menu Profil -->
+                <div class="menu-button-container">
+                    <button class="mdc-menu-button profile-button" id="profile-menu-button">
+                        <img src="https://media.licdn.com/dms/image/v2/D4E03AQH-XUBWdWFAZQ/profile-displayphoto-shrink_400_400/B4EZU09O8PG0Ao-/0/1740350222673?e=1756339200&v=beta&t=9x-yBGkFoMimSPa6xw0IKsVcbDX950-rXffeNM5IGH0" alt="user" class="user-avatar">
+                        <span class="user-name">Fatima-Ezzahra Mardi</span>
+                    </button> 
+                    <div class="mdc-menu" id="profile-menu">
+                        <ul class="mdc-list">
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail item-thumbnail-icon">
+                                    <i class="mdi mdi-account-edit-outline"></i>
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Modifier le profil</h6>
+                                </div>
+                            </li>
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail item-thumbnail-icon">
+                                    <i class="mdi mdi-logout-variant"></i>
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Déconnexion</h6>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- Menu Paramètres
+                <div class="menu-button-container d-none-mobile">
+                    <button class="mdc-menu-button" id="settings-menu-button">
+                        <i class="mdi mdi-cog"></i>
+                    </button>
+                    <div class="mdc-menu" id="settings-menu">
+                        <ul class="mdc-list">
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail item-thumbnail-icon">
+                                    <i class="mdi mdi-cog-outline"></i>
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Paramètres</h6>
+                                </div>
+                            </li>
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail item-thumbnail-icon">
+                                    <i class="mdi mdi-update"></i>
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Mise à jour</h6>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>-->
+
+                <!-- Menu Notifications -->
+                <div class="menu-button-container">
+                    <button class="mdc-menu-button" id="notifications-menu-button">
+                        <i class="mdi mdi-bell-outline"></i>
+                    </button>
+                    <div class="mdc-menu" id="notifications-menu">
+                        <h6 class="menu-title">
+                            <i class="mdi mdi-bell-outline"></i>
+                            Notifications
+                        </h6>
+                        <ul class="mdc-list">
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail item-thumbnail-icon">
+                                    <i class="mdi mdi-email-outline"></i>
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Nouveau message reçu</h6>
+                                    <small class="text-muted">Il y a 6 minutes</small>
+                                </div>
+                            </li>
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail item-thumbnail-icon">
+                                    <i class="mdi mdi-account-outline"></i>
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Nouvel utilisateur enregistré</h6>
+                                    <small class="text-muted">Il y a 15 minutes</small>
+                                </div>
+                            </li>
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail item-thumbnail-icon">
+                                    <i class="mdi mdi-alert-circle-outline"></i>
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Alerte système</h6>
+                                    <small class="text-muted">Il y a 2 jours</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Menu Messages -->
+                <div class="menu-button-container">
+                    <button class="mdc-menu-button" id="messages-menu-button">
+                        <span class="count-indicator">
+                            <i class="mdi mdi-email-outline"></i>
+                            <span class="count">3</span>
+                        </span>
+                    </button>
+                    <div class="mdc-menu" id="messages-menu">
+                        <h6 class="menu-title">
+                            <i class="mdi mdi-email-outline"></i>
+                            Messages
+                        </h6>
+                        <ul class="mdc-list">
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail">
+                                    <img src="https://via.placeholder.com/40x40/28a745/ffffff?text=M" alt="user">
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Marc vous a envoyé un message</h6>
+                                    <small class="text-muted">Il y a 1 minute</small>
+                                </div>
+                            </li>
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail">
+                                    <img src="https://via.placeholder.com/40x40/dc3545/ffffff?text=C" alt="user">
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Clara vous a envoyé un message</h6>
+                                    <small class="text-muted">Il y a 15 minutes</small>
+                                </div>
+                            </li>
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail">
+                                    <img src="https://via.placeholder.com/40x40/ffc107/ffffff?text=P" alt="user">
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Photo de profil mise à jour</h6>
+                                    <small class="text-muted">Il y a 18 minutes</small>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Menu Actions -->
+                <div class="menu-button-container d-none-mobile">
+                    <button class="mdc-menu-button" id="actions-menu-button">
+                        <i class="mdi mdi-dots-vertical"></i>
+                    </button>
+                    <div class="mdc-menu" id="actions-menu">
+                        <ul class="mdc-list">
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail item-thumbnail-icon">
+                                    <i class="mdi mdi-lock-outline"></i>
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Verrouiller l'écran</h6>
+                                </div>
+                            </li>
+                            <li class="mdc-list-item">
+                                <div class="item-thumbnail item-thumbnail-icon">
+                                    <i class="mdi mdi-logout-variant"></i>
+                                </div>
+                                <div class="item-content">
+                                    <h6 class="item-subject">Déconnexion</h6>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contenu principal -->
+<main class="content">
+      <router-outlet></router-outlet>
+    </main>
+
+</body>
+</html>

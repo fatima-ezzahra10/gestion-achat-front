@@ -1,0 +1,151 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ titre ? 'Modifier' : 'Ajouter' }} un titre</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="titreForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+<!-- Code -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Code <span class="text-danger">*</span></label>
+          <input
+            formControlName="code"
+            class="form-control"
+            [class.is-invalid]="titreForm.controls['code'].invalid && titreForm.controls['code'].touched"
+            placeholder="Entrez le code du titre"
+          />
+          <div *ngIf="titreForm.controls['code'].invalid && titreForm.controls['code'].touched" class="invalid-feedback">
+            <div *ngIf="titreForm.controls['code'].errors?.['required']">Le code est obligatoire</div>
+            <div *ngIf="titreForm.controls['code'].errors?.['minlength']">Le code doit contenir au moins 2 caractères</div>
+          </div>
+        </div>
+
+        <!-- Nom -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Nom <span class="text-danger">*</span></label>
+          <input
+            formControlName="nom"
+            class="form-control"
+            [class.is-invalid]="titreForm.controls['nom'].invalid && titreForm.controls['nom'].touched"
+            placeholder="Entrez le nom du titre"
+          />
+          <div *ngIf="titreForm.controls['nom'].invalid && titreForm.controls['nom'].touched" class="invalid-feedback">
+            <div *ngIf="titreForm.controls['nom'].errors?.['required']">Le nom est obligatoire</div>
+            <div *ngIf="titreForm.controls['nom'].errors?.['minlength']">Le nom doit contenir au moins 2 caractères</div>
+          </div>
+        </div>
+
+        <!-- Classe -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Classe <span class="text-danger">*</span></label>
+          <select
+            formControlName="classe"
+            class="form-select"
+            [class.is-invalid]="titreForm.controls['classe'].invalid && titreForm.controls['classe'].touched"
+          >
+            <option value="">Sélectionner une classe</option>
+            <option value="Ordinaire">Ordinaire</option>
+            <option value="Préférentielle">Préférentielle</option>
+            <option value="Convertible">Convertible</option>
+            <option value="Sans droit de vote">Sans droit de vote</option>
+            <option value="Autre">Autre</option>
+          </select>
+          <div *ngIf="titreForm.controls['classe'].invalid && titreForm.controls['classe'].touched" class="invalid-feedback">
+            La classe est obligatoire
+          </div>
+        </div>
+
+        <!-- Catégorie -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Catégorie</label>
+          <input
+            formControlName="categorie"
+            class="form-control"
+            placeholder="Entrez la catégorie"
+          />
+        </div>
+
+        <!-- Date de création -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Date de création</label>
+          <input
+            formControlName="dateCreation"
+            type="date"
+            class="form-control"
+          />
+        </div>
+
+<!-- Valeur Nominale -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Valeur Nominale</label>
+          <div class="input-group">
+            <input
+              type="number"
+              formControlName="valeurNominale"
+              class="form-control"
+              [class.is-invalid]="titreForm.controls['valeurNominale'].invalid && titreForm.controls['valeurNominale'].touched"
+              placeholder="0.00"
+              step="0.01"
+              min="0"
+            />
+            <span class="input-group-text">{{ titreForm.get('devise')?.value || 'MAD' }}</span>
+          </div>
+          <div *ngIf="titreForm.controls['valeurNominale'].invalid && titreForm.controls['valeurNominale'].touched" class="invalid-feedback">
+            La valeur nominale doit être positive
+          </div>
+        </div>
+
+        <!-- Devise -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Devise</label>
+          <select formControlName="devise" class="form-select">
+            <option value="MAD">MAD - Dirham Marocain</option>
+            <option value="EUR">EUR - Euro</option>
+            <option value="USD">USD - Dollar Américain</option>
+            <option value="GBP">GBP - Livre Sterling</option>
+          </select>
+        </div>
+
+        <!-- Date d'échéance -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Date d'échéance</label>
+          <input type="date" formControlName="dateEcheance" class="form-control" />
+        </div>
+
+        <!-- Date d'émission -->
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Date d'émission</label>
+          <input type="date" formControlName="dateDemission" class="form-control" />
+        </div>
+
+        <!-- Statut Actif -->
+        <div class="col-md-6 mb-3">
+          <div class="form-check form-switch">
+            <input
+              type="checkbox"
+              formControlName="actif"
+              class="form-check-input"
+              id="actifSwitch"
+            />
+            <label class="form-check-label" for="actifSwitch">
+              Titre actif
+            </label>
+          </div>
+        </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Annuler</button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="onSubmit()"
+    [disabled]="titreForm.invalid || isSaving"
+  >
+    <span *ngIf="isSaving" class="spinner-border spinner-border-sm me-1"></span>
+    {{ titre ? 'Modifier' : 'Enregistrer' }}
+  </button>
+</div>

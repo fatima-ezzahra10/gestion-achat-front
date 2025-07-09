@@ -1,0 +1,29 @@
+<div class="modal-header">
+  <h5 class="modal-title">Détails du prix</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-6">
+      <p><strong>Titre:</strong></p>
+      <p>{{ titre?.code }} - {{ titre?.nom }}</p>
+    </div>
+    <div class="col-md-6">
+      <p><strong>Date:</strong></p>
+      <p>{{ prix.datePrix | date:'dd/MM/yyyy' }}</p>
+    </div>
+    <div class="col-md-6">
+      <p><strong>Valeur:</strong></p>
+      <p>{{ prix.valeur | number:'1.2-2' }}</p>
+    </div>
+    <div class="col-md-6">
+      <p><strong>Devise:</strong></p>
+      <p>{{ prix.devise }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">Fermer</button>
+</div>

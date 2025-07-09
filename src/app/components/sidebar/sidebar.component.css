@@ -1,0 +1,309 @@
+* {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      overflow-x: hidden;
+    }
+
+    /* Sidebar Styles */
+    .mdc-drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 280px;
+      height: 100vh;
+      background: #fff;
+      border-right: 1px solid rgba(0,0,0,0.12);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      z-index: 1000;
+    }
+
+    .mdc-drawer__header {
+      padding: 20px 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+      background: #fff;
+    }
+
+    .brand-logo img {
+      height: 45px;
+      width: auto;
+      margin-left: 30px;
+    }
+
+    .brand-logo {
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ef1100;
+      display: block;
+    }
+
+    .mdc-drawer__content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+
+    .user-info {
+      padding: 16px;
+      background: #f8f9fa;
+      border-bottom: 1px solid rgba(0,0,0,0.12);
+    }
+
+    .user-info .name {
+      font-weight: 500;
+      font-size: 16px;
+      color: #212529;
+      margin-bottom: 4px;
+    }
+
+    .user-info .email {
+      font-size: 14px;
+      color: #6c757d;
+    }
+
+    .mdc-list-group {
+      flex: 1;
+      padding: 8px 0;
+    }
+
+    .mdc-list {
+      padding: 0;
+    }
+
+    .mdc-list-item {
+      list-style: none;
+      margin: 0;
+    }
+
+    .mdc-drawer-link {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #424242;
+      font-size: 14px;
+      font-weight: 400;
+      transition: all 0.2s ease;
+      border-radius: 0;
+      position: relative;
+    }
+
+    .mdc-drawer-link:hover {
+      background-color: rgba(0, 0, 234, 0.04);
+      color: #ef1100;
+    }
+
+    .mdc-drawer-link.active {
+      background-color: rgba(0, 0, 234, 0.04);
+      color: #ef1100;
+      border-right: 3px solid #ef1100;
+    }
+
+    .mdc-list-item__start-detail {
+      margin-right: 16px;
+      font-size: 20px;
+      color: inherit;
+    }
+
+    .mdc-expansion-panel-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: #424242;
+      font-size: 14px;
+      font-weight: 400;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .mdc-expansion-panel-link:hover {
+      background-color: rgba(0, 0, 234, 0.04);
+      color: #ef1100;
+    }
+
+    .mdc-drawer-arrow {
+      font-size: 18px;
+      transition: transform 0.2s ease;
+    }
+
+    .mdc-expansion-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background-color: #f8f9fa;
+    }
+
+    .mdc-expansion-panel.expanded {
+      max-height: 300px;
+    }
+
+    .mdc-expansion-panel.expanded + .mdc-expansion-panel-link .mdc-drawer-arrow {
+      transform: rotate(90deg);
+    }
+
+    .mdc-drawer-submenu {
+      padding: 4px 0;
+    }
+
+    .mdc-drawer-submenu .mdc-drawer-link {
+      padding-left: 56px;
+      font-size: 13px;
+    }
+
+    .profile-actions {
+      padding: 16px;
+      border-top: 1px solid rgba(0,0,0,0.12);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .profile-actions a {
+      color: #6c757d;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .profile-actions a:hover {
+      color: #ef1100;
+    }
+
+    .divider {
+      width: 1px;
+      height: 12px;
+      background-color: rgba(0,0,0,0.12);
+    }
+
+    .mdc-card {
+      margin: 16px;
+      padding: 16px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #ef1100 0%, #ef1100 100%);
+      color: white;
+      box-shadow: 0 4px 8px rgba(0, 0, 234, 0.04);
+    }
+
+    .premium-card .d-flex {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .icon-card {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 12px;
+    }
+
+    .icon-card i {
+      font-size: 20px;
+      color: white;
+    }
+
+    .premium-card p {
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    .font-weight-bold {
+      font-weight: 600;
+    }
+
+    .tx-12 {
+      font-size: 12px;
+    }
+
+    .tx-10 {
+      font-size: 10px;
+      opacity: 0.8;
+    }
+
+    .tx-8 {
+      font-size: 11px;
+      opacity: 0.9;
+    }
+
+    .mt-0 { margin-top: 0; }
+    .mb-0 { margin-bottom: 0; }
+    .mb-1 { margin-bottom: 4px; }
+    .mt-3 { margin-top: 12px; }
+    .mb-3 { margin-bottom: 12px; }
+    .ml-2 { margin-left: 8px; }
+
+    .mdc-button {
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mdc-button--raised {
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .mdc-button--white {
+      background-color: white;
+      color: #ef1100;
+    }
+
+    .mdc-button--white:hover {
+      background-color: #f5f5f5;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    /* Main Content */
+    .content {
+      margin-left: 280px;
+      padding: 20px;
+      background-color: #f5f5f5;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .mdc-drawer {
+        left: -280px;
+        transition: left 0.3s ease;
+      }
+
+      .mdc-drawer.open {
+        left: 0;
+      }
+
+      .content {
+        margin-left: 0;
+        width: 100%;
+      }
+      .logo {
+        height: 60px;
+        margin: 10px;
+      }
+    }

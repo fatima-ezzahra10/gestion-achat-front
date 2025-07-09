@@ -1,0 +1,129 @@
+<div class="modal-header">
+  <h4 class="modal-title">{{ client ? 'Modifier' : 'Ajouter' }} un client</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="clientForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Nom <span class="text-danger">*</span></label>
+        <input
+          formControlName="nom"
+          class="form-control"
+          [class.is-invalid]="clientForm.controls['nom'].invalid && clientForm.controls['nom'].touched"
+          placeholder="Entrez le nom du client"
+        />
+        <div *ngIf="clientForm.controls['nom'].invalid && clientForm.controls['nom'].touched" class="invalid-feedback">
+          Le nom est obligatoire
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Prénom <span class="text-danger">*</span></label>
+        <input
+          formControlName="prenom"
+          class="form-control"
+          [class.is-invalid]="clientForm.controls['prenom'].invalid && clientForm.controls['prenom'].touched"
+          placeholder="Entrez le prénom du client"
+        />
+        <div *ngIf="clientForm.controls['prenom'].invalid && clientForm.controls['prenom'].touched" class="invalid-feedback">
+          Le prénom est obligatoire
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Email <span class="text-danger">*</span></label>
+        <input
+          formControlName="email"
+          type="email"
+          class="form-control"
+          [class.is-invalid]="clientForm.controls['email'].invalid && clientForm.controls['email'].touched"
+          placeholder="Entrez l'email du client"
+        />
+        <div *ngIf="clientForm.controls['email'].invalid && clientForm.controls['email'].touched" class="invalid-feedback">
+          L'email est obligatoire et doit être valide
+        </div>
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Téléphone</label>
+        <input
+          formControlName="telephone"
+          class="form-control"
+          placeholder="Entrez le téléphone du client"
+        />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Adresse</label>
+        <input
+          formControlName="adresse"
+          class="form-control"
+          placeholder="Entrez l'adresse du client"
+        />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Ville</label>
+        <input
+          formControlName="ville"
+          class="form-control"
+          placeholder="Entrez la ville du client"
+        />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Code Postal</label>
+        <input
+          formControlName="codePostal"
+          class="form-control"
+          placeholder="Entrez le code postal du client"
+        />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Pays</label>
+        <input
+          formControlName="pays"
+          class="form-control"
+          placeholder="Entrez le pays du client"
+        />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Date de création</label>
+        <input
+          formControlName="dateCreation"
+          type="date"
+          class="form-control"
+          readonly
+        />
+      </div>
+
+      <div class="col-md-6 mb-3">
+        <label class="form-label">Statut</label>
+        <select
+          formControlName="statut"
+          class="form-select"
+        >
+          <option value="ACTIF">ACTIF</option>
+          <option value="INACTIF">INACTIF</option>
+        </select>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-secondary" (click)="activeModal.dismiss()">Annuler</button>
+  <button
+    type="button"
+    class="btn btn-primary"
+    (click)="onSubmit()"
+    [disabled]="clientForm.invalid || isSaving"
+  >
+    <span *ngIf="isSaving" class="spinner-border spinner-border-sm"></span>
+    {{ client ? 'Modifier' : 'Enregistrer' }}
+  </button>
+</div>

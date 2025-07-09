@@ -1,0 +1,38 @@
+<div class="modal-header">
+  <h4 class="modal-title">Détails du titre</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+
+<div class="modal-body" *ngIf="titre">
+  <div class="row">
+    <!-- Colonne 1 -->
+    <div class="col-md-6">
+      <p><strong>Code:</strong> <code>{{ titre.code }}</code></p>
+      <p><strong>Nom:</strong> {{ titre.nom }}</p>
+      <p><strong>Classe:</strong> <span class="badge bg-info">{{ titre.classe }}</span></p>
+      <p><strong>Catégorie:</strong> {{ titre.categorie || 'Non renseignée' }}</p>
+      <p><strong>Valeur Nominale:</strong>
+        {{ titre.valeurNominale | number:'1.2-2' }} {{ titre.devise || 'MAD' }}
+      </p>
+    </div>
+
+    <!-- Colonne 2 -->
+    <div class="col-md-6">
+      <p><strong>Date de création:</strong> {{ titre.dateCreation | date:'dd/MM/yyyy' }}</p>
+      <p><strong>Date d'échéance:</strong> {{ titre.dateEcheance | date:'dd/MM/yyyy' }}</p>
+      <p><strong>Date d'émission:</strong> {{ titre.dateDemission | date:'dd/MM/yyyy' }}</p>
+      <p><strong>Statut:</strong>
+        <span class="badge" [ngClass]="{
+          'bg-success': titre.actif,
+          'bg-danger': !titre.actif
+        }">
+          {{ titre.actif ? 'Actif' : 'Inactif' }}
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button type="button" class="btn btn-primary" (click)="activeModal.close()">Fermer</button>
+</div>
