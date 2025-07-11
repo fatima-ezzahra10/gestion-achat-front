@@ -15,7 +15,10 @@
 
 /* Layout */
 .page-wrapper {
-  padding: 20px;
+  padding: 0px;
+  margin-left: 297px;
+  margin-top: 110px;
+  padding-right: 10px;
 }
 
 .mdc-layout-grid {

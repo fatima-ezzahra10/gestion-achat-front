@@ -9,16 +9,16 @@ import { Chart, registerables, ChartOptions } from 'chart.js';
 })
 export class DashboardComponent implements OnInit {
   stats = {
-    clients: 42,
-    titres: 15,
-    transactions: 128,
-    prix: 89
+    clients: 51,
+    titres: 22,
+    transactions: 73,
+    prix: 46
   };
 
   recentClients = [
-    { id: 1, nom: 'Dupont', prenom: 'Jean', email: 'jean.dupont@example.com' },
-    { id: 2, nom: 'Martin', prenom: 'Sophie', email: 'sophie.martin@example.com' },
-    { id: 3, nom: 'Bernard', prenom: 'Pierre', email: 'pierre.bernard@example.com' }
+    { id: 1, nom: 'Youssefi', prenom: 'Ahmed', email: 'youssefi.ahmed@gmail.com' },
+    { id: 2, nom: 'Kadiri', prenom: 'Laila', email: 'laila.kadiri25@gmail.com' },
+    { id: 3, nom: 'khalil', prenom: 'Yousra', email: 'yousrakh589@gmail.com' }
   ];
 
   recentTitres = [
@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
     new Chart('titresChart', {
       type: 'pie',
       data: {
-        labels: ['Actions', 'Obligations', 'ETF', 'Fonds'],
+        labels: ['Actions', 'Obligations', 'OPCVM', 'OBL'],
         datasets: [{
           data: [45, 25, 20, 10],
           backgroundColor: [

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +25,9 @@ import { TransactionViewModalComponent } from './pop-ups/transaction/transaction
 import { PrixFormModalComponent } from './pop-ups/prix/prix-form-modal/prix-form-modal.component';
 import { PrixViewModalComponent } from './pop-ups/prix/prix-view-modal/prix-view-modal.component';
 import { Chart, registerables } from 'chart.js';
-
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 Chart.register(...registerables);
 
@@ -49,7 +50,9 @@ Chart.register(...registerables);
     TransactionFormModalComponent,
     TransactionViewModalComponent,
     PrixFormModalComponent,
-    PrixViewModalComponent
+    PrixViewModalComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +63,13 @@ Chart.register(...registerables);
     NgbModule
   ],
   providers: [
-    provideHttpClient(withFetch()) ],
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    provideClientHydration()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

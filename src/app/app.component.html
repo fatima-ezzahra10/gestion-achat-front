@@ -1,10 +1,8 @@
 <div class="app-container">
-  <app-navbar></app-navbar>
-  <app-sidebar></app-sidebar>
+  <app-navbar *ngIf="authService.isAuthenticated()"></app-navbar>
+  <app-sidebar *ngIf="authService.isAuthenticated()"></app-sidebar>
 
-  <main class="main-content">
+  <main class="main-content" [class.full-width]="!authService.isAuthenticated()">
     <router-outlet></router-outlet>
   </main>
 </div>
-
-<app-footer></app-footer>

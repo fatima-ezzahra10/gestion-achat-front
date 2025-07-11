@@ -1,0 +1,95 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="register-header">
+      <h2>Inscription</h2>
+      <p>Créez votre compte</p>
+    </div>
+
+    <div *ngIf="success" class="alert alert-success">
+      <strong>Inscription réussie !</strong> Redirection vers la page de connexion...
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" *ngIf="!success">
+      <div class="form-group">
+        <label for="username">Nom d'utilisateur</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          class="form-control"
+          [class.is-invalid]="f['username'].invalid && f['username'].touched"
+          placeholder="Choisissez un nom d'utilisateur"
+        >
+        <div *ngIf="f['username'].invalid && f['username'].touched" class="invalid-feedback">
+          <div *ngIf="f['username'].errors?.['required']">Le nom d'utilisateur est requis</div>
+          <div *ngIf="f['username'].errors?.['minlength']">Le nom d'utilisateur doit contenir au moins 3 caractères</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          [class.is-invalid]="f['email'].invalid && f['email'].touched"
+          placeholder="Entrez votre email"
+        >
+        <div *ngIf="f['email'].invalid && f['email'].touched" class="invalid-feedback">
+          <div *ngIf="f['email'].errors?.['required']">L'email est requis</div>
+          <div *ngIf="f['email'].errors?.['email']">Format d'email invalide</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+          [class.is-invalid]="f['password'].invalid && f['password'].touched"
+          placeholder="Choisissez un mot de passe"
+        >
+        <div *ngIf="f['password'].invalid && f['password'].touched" class="invalid-feedback">
+          <div *ngIf="f['password'].errors?.['required']">Le mot de passe est requis</div>
+          <div *ngIf="f['password'].errors?.['minlength']">Le mot de passe doit contenir au moins 6 caractères</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirmer le mot de passe</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="form-control"
+          [class.is-invalid]="f['confirmPassword'].invalid && f['confirmPassword'].touched"
+          placeholder="Confirmez votre mot de passe"
+        >
+        <div *ngIf="f['confirmPassword'].invalid && f['confirmPassword'].touched" class="invalid-feedback">
+          <div *ngIf="f['confirmPassword'].errors?.['required']">La confirmation est requise</div>
+          <div *ngIf="f['confirmPassword'].errors?.['passwordMismatch']">Les mots de passe ne correspondent pas</div>
+        </div>
+      </div>
+
+      <div *ngIf="error" class="alert alert-danger">
+        {{ error }}
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary btn-block"
+        [disabled]="loading || registerForm.invalid"
+      >
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-2"></span>
+        {{ loading ? 'Inscription...' : 'S\'inscrire' }}
+      </button>
+    </form>
+
+    <div class="register-footer" *ngIf="!success">
+      <p>Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
+    </div>
+  </div>
+</div>
